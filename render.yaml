@@ -1,0 +1,13 @@
+﻿services:
+  - type: web
+    name: mailshield-ai-backend
+    runtime: python
+    rootDir: backend-python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port 
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.12.0

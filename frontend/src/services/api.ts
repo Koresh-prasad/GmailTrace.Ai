@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { ScanResult, DashboardStats } from '@shared/types';
 
-const API_BASE = '/api';
+const rawEnvUrl = (import.meta as any).env?.VITE_API_URL as string | undefined;
+const API_BASE = rawEnvUrl
+  ? (rawEnvUrl.endsWith('/api') ? rawEnvUrl : `${rawEnvUrl.replace(/\/$/, '')}/api`)
+  : '/api';
 
 export const apiClient = axios.create({
   baseURL: API_BASE,
