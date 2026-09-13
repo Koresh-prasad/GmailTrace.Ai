@@ -123,7 +123,7 @@ export const api = {
 
   // Download forensic PDF
   getReportDownloadUrl(scanId: string): string {
-    return `/api/report/${scanId}`;
+    return `${API_BASE}/report/${scanId}`;
   },
 
   // Mock CERT-In report
