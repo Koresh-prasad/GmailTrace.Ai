@@ -1,0 +1,28 @@
+{
+  "name": "mailshield-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Email Threat Detection, GeoLocation & Forensic Intelligence Platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -p \"[{name}]\" -n \"PYTHON-BACKEND,FRONTEND\" -c \"yellow.bold,magenta.bold\" \"npm run backend:python\" \"npm run dev --prefix frontend\"",
+    "dev:python": "concurrently -k -p \"[{name}]\" -n \"PYTHON-BACKEND,FRONTEND\" -c \"yellow.bold,magenta.bold\" \"npm run backend:python\" \"npm run dev --prefix frontend\"",
+    "dev:node": "concurrently -k -p \"[{name}]\" -n \"NODE-BACKEND,FRONTEND\" -c \"cyan.bold,magenta.bold\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "backend:python": "cd backend-python && .venv\\Scripts\\python.exe -m uvicorn main:app --port 5000 --reload",
+    "backend:node": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
+    "start": "npm run backend:python"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "cybersecurity",
+    "phishing-detection",
+    "email-forensics",
+    "threat-intelligence",
+    "ai"
+  ],
+  "author": "MailShield AI Team",
+  "license": "MIT"
+}

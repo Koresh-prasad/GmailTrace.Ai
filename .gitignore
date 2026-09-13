@@ -1,0 +1,38 @@
+﻿# Dependencies
+node_modules/
+*/node_modules/
+
+# Python Virtual Environments & Caches
+.venv/
+*/.venv/
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*.class
+.pytest_cache/
+
+# Production Builds
+dist/
+*/dist/
+build/
+*/build/
+
+# Databases & Runtime Data
+*.sqlite
+*.sqlite3
+*.db
+backend/data/*.db
+backend-python/data/*.db
+*.log
+
+# Environment & Local Secrets
+.env
+.env.local
+.env.*.local
+
+# IDE & OS Artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

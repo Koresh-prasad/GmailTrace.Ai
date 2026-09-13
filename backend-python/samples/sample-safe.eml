@@ -1,0 +1,21 @@
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com [209.85.220.65])
+    by mx.google.com with SMTPS id z18sor2345678pld.12
+    for <user@mycompany.org>; Sat, 13 Sep 2026 04:15:20 -0700 (PDT)
+Received: from 10.120.3.14 (corp-gw.mycompany.org [142.250.180.14])
+    by mail-sor-f65.google.com with SMTP; Sat, 13 Sep 2026 04:14:50 -0700
+From: "GitHub Enterprise" <notifications@github.com>
+To: user@mycompany.org
+Subject: [GitHub] Pull Request #42 merged into main: Enterprise Forensic Pipeline
+Date: Sat, 13 Sep 2026 04:14:30 -0700
+Authentication-Results: mx.google.com;
+    spf=pass (google.com: domain of notifications@github.com designates 209.85.220.65 as permitted sender);
+    dkim=pass header.i=@github.com;
+    dmarc=pass (p=REJECT)
+Message-ID: <github/pull/42@github.com>
+Content-Type: text/html; charset="UTF-8"
+
+<div>
+  <h3>GitHub Enterprise Notification</h3>
+  <p>Pull Request #42: <strong>feat: forensic IP hop tracking and DMARC enforcement</strong> was successfully merged by lead-maintainer into <code>main</code>.</p>
+  <p><a href="https://github.com/mycompany/mailshield/pull/42">View Pull Request Details on GitHub</a></p>
+</div>

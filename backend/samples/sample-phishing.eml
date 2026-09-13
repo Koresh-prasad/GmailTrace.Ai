@@ -1,0 +1,29 @@
+Received: from mail-relay-4.spammers-host.ru (spammers-host.ru [185.220.101.5])
+    by mx.google.com with ESMTPS id x19si1234567rcd.12
+    for <victim@corporate-bank.com>; Fri, 12 Sep 2026 14:22:10 +0000 (UTC)
+Received: from 10.0.0.44 (unknown [91.240.118.82])
+    by mail-relay-4.spammers-host.ru; Fri, 12 Sep 2026 14:21:40 +0000
+From: "Corporate IT Support Desk" <security-alerts@bank-corp-security-login.top>
+Reply-To: evil-collector@attacker-c2.net
+To: victim@corporate-bank.com
+Subject: URGENT: Mandatory MFA Re-Verification - Account Access Suspended in 24 Hours
+Date: Fri, 12 Sep 2026 14:20:00 +0000
+Authentication-Results: mx.google.com;
+    spf=fail (google.com: domain of security-alerts@bank-corp-security-login.top does not designate 185.220.101.5 as permitted sender);
+    dkim=fail header.i=@bank-corp-security-login.top;
+    dmarc=fail (p=REJECT)
+Message-ID: <threat-98234-urgent@bank-corp-security-login.top>
+Content-Type: text/html; charset="UTF-8"
+
+<div style="font-family: Arial, sans-serif;">
+  <h2 style="color: #dc2626;">Immediate Action Required: Security Alert</h2>
+  <p>Dear Valued Employee,</p>
+  <p>We detected unauthorized login attempts to your corporate banking portal from Moscow, Russia. Your multi-factor credentials have been temporarily frozen.</p>
+  <p>To avoid permanent termination of your workstation access, you must <strong>re-authenticate immediately</strong> within 24 hours.</p>
+  <p>
+    <a href="http://192.168.1.99/login-credential-harvester.php" target="_blank">Click Here to Re-Authenticate Your MFA Token</a>
+  </p>
+  <p>Failure to respond will result in immediate escalation to the Internal Affairs and Compliance team.</p>
+  <br/>
+  <p>Warm regards,<br/>Corporate Cybersecurity Operations</p>
+</div>

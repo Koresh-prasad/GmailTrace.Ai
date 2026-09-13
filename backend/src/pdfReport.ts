@@ -1,0 +1,197 @@
+import PDFDocument from 'pdfkit';
+import { ScanResult } from '../../shared/types';
+import { Response } from 'express';
+
+export function generateForensicPdf(scan: ScanResult, res: Response) {
+  const doc = new PDFDocument({ margin: 40, size: 'A4' });
+
+  // Stream directly to HTTP response
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', `attachment; filename="MailShield-Case-${scan.id}.pdf"`);
+  doc.pipe(res);
+
+  // Document Colors
+  const primaryColor = '#1D4ED8';
+  const textDark = '#111827';
+  const textMuted = '#4B5563';
+  const dangerColor = '#DC2626';
+  const accentColor = '#059669';
+
+  // 1. HEADER & CASE TITLE
+  doc
+    .rect(40, 40, 515, 65)
+    .fill('#0B0F19');
+
+  doc
+    .fillColor('#3B82F6')
+    .fontSize(18)
+    .font('Helvetica-Bold')
+    .text('MAILSHIELD AI · FORENSIC CASE REPORT', 55, 55);
+
+  doc
+    .fillColor('#9CA3AF')
+    .fontSize(9)
+    .font('Helvetica')
+    .text(`Case ID: ${scan.id}   |   Classification: CERT-In Incident Standard   |   Date: ${new Date(scan.created_at).toUTCString()}`, 55, 80);
+
+  doc.moveDown(3);
+
+  // 2. VERDICT & RISK SCORE BANNER
+  const isMalicious = scan.risk_score >= 70;
+  const isSuspicious = scan.risk_score >= 30 && scan.risk_score < 70;
+  const bannerColor = isMalicious ? '#FEF2F2' : isSuspicious ? '#FFFBEB' : '#ECFDF5';
+  const strokeColor = isMalicious ? dangerColor : isSuspicious ? '#D97706' : accentColor;
+
+  const currentY = 120;
+  doc
+    .rect(40, currentY, 515, 55)
+    .fillAndStroke(bannerColor, strokeColor);
+
+  doc
+    .fillColor(strokeColor)
+    .fontSize(14)
+    .font('Helvetica-Bold')
+    .text(`VERDICT: ${scan.verdict.toUpperCase()} (THREAT SCORE: ${scan.risk_score}/100)`, 55, currentY + 12);
+
+  doc
+    .fillColor(textMuted)
+    .fontSize(9)
+    .font('Helvetica')
+    .text(`SPF: ${scan.spf_result}   |   DKIM: ${scan.dkim_result}   |   DMARC: ${scan.dmarc_result}   |   Flagged Vectors: ${scan.flagged_reasons?.length || 0}`, 55, currentY + 34);
+
+  // 3. EMAIL METADATA
+  let y = 190;
+  doc
+    .fillColor(textDark)
+    .fontSize(12)
+    .font('Helvetica-Bold')
+    .text('1. Message & Identity Metadata', 40, y);
+
+  y += 18;
+  doc
+    .fontSize(9)
+    .font('Helvetica-Bold').text('Subject: ', 40, y)
+    .font('Helvetica').text(scan.subject || '(No Subject)', 90, y);
+
+  y += 14;
+  doc
+    .font('Helvetica-Bold').text('From: ', 40, y)
+    .font('Helvetica').text(scan.sender, 90, y);
+
+  y += 14;
+  doc
+    .font('Helvetica-Bold').text('To: ', 40, y)
+    .font('Helvetica').text(scan.recipient || 'Internal Recipient', 90, y);
+
+  if (scan.claimed_sender_geo) {
+    y += 14;
+    doc
+      .font('Helvetica-Bold').text('Claimed Geo: ', 40, y)
+      .font('Helvetica').text(`${scan.claimed_sender_geo.city}, ${scan.claimed_sender_geo.country}`, 110, y);
+  }
+
+  // 4. EVIDENCE CUSTODY HASH
+  y += 22;
+  doc
+    .fillColor(textDark)
+    .fontSize(12)
+    .font('Helvetica-Bold')
+    .text('2. Chain-of-Custody Cryptographic Hash', 40, y);
+
+  y += 16;
+  doc
+    .rect(40, y, 515, 24)
+    .fill('#F3F4F6');
+
+  doc
+    .fillColor('#1F2937')
+    .fontSize(8)
+    .font('Courier')
+    .text(`SHA-256: ${scan.raw_email_hash}`, 48, y + 7);
+
+  // 5. HOP ROUTE TABLE
+  y += 38;
+  doc
+    .fillColor(textDark)
+    .fontSize(12)
+    .font('Helvetica-Bold')
+    .text('3. Intermediate Mail Transfer Agent (MTA) Route', 40, y);
+
+  y += 16;
+  doc
+    .rect(40, y, 515, 18)
+    .fill('#E5E7EB');
+
+  doc
+    .fillColor('#374151')
+    .fontSize(8)
+    .font('Helvetica-Bold')
+    .text('Hop', 45, y + 5)
+    .text('IP Address', 75, y + 5)
+    .text('Geolocation', 160, y + 5)
+    .text('Autonomous System (ASN)', 280, y + 5)
+    .text('Status / Anomaly', 430, y + 5);
+
+  y += 20;
+  doc.font('Helvetica').fontSize(8);
+
+  if (scan.hops && scan.hops.length > 0) {
+    for (const hop of scan.hops) {
+      if (y > 720) {
+        doc.addPage();
+        y = 40;
+      }
+
+      doc
+        .fillColor(hop.isMismatch ? dangerColor : textDark)
+        .text(`#${hop.hop_order}`, 45, y)
+        .text(hop.ip, 75, y)
+        .text(`${hop.city || 'Unknown'}, ${hop.country || 'Unknown'}`, 160, y)
+        .text((hop.asn || 'N/A').slice(0, 24), 280, y)
+        .text(hop.isMismatch ? 'GEO MISMATCH' : 'Verified Relay', 430, y);
+
+      y += 16;
+    }
+  }
+
+  // 6. AI COPILOT EXPLAINABILITY SUMMARY
+  y += 10;
+  if (y > 660) {
+    doc.addPage();
+    y = 40;
+  }
+
+  doc
+    .fillColor(textDark)
+    .fontSize(12)
+    .font('Helvetica-Bold')
+    .text('4. AI Forensic Expert Assessment', 40, y);
+
+  y += 18;
+  doc
+    .rect(40, y, 515, 60)
+    .fill('#F9FAFB');
+
+  doc
+    .fillColor('#374151')
+    .fontSize(8.5)
+    .font('Helvetica')
+    .text(scan.ai_explanation, 50, y + 10, {
+      width: 495,
+      lineGap: 3
+    });
+
+  // 7. FOOTER DISCLAIMER
+  doc
+    .fontSize(8)
+    .font('Helvetica-Oblique')
+    .fillColor('#9CA3AF')
+    .text(
+      'Generated by MailShield AI — Forensic Intelligence & GeoLocation Platform. Tamper-evident report certified for CERT-In incident intake.',
+      40,
+      800,
+      { align: 'center', width: 515 }
+    );
+
+  doc.end();
+}
