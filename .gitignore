@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 */node_modules/
 
@@ -36,3 +36,5 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+cloudflared.exe
+
