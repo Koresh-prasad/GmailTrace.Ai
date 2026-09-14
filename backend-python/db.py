@@ -9,8 +9,11 @@ if os.environ.get("VERCEL"):
     DB_PATH = os.path.join(DB_DIR, "mailshield.db")
 else:
     DB_DIR = os.path.join(os.path.dirname(__file__), "data")
-    os.makedirs(DB_DIR, exist_ok=True)
     DB_PATH = os.environ.get("DATABASE_PATH", os.path.join(DB_DIR, "mailshield.db"))
+    db_parent = os.path.dirname(os.path.abspath(DB_PATH))
+    if db_parent:
+        os.makedirs(db_parent, exist_ok=True)
+
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
