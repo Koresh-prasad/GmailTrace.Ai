@@ -19,7 +19,7 @@ import { Button } from '../components/ui/Button';
 import { PageTransition } from '../components/ui/PageTransition';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { api } from '../services/api';
-import { ScanResult } from '@shared/types';
+import { ScanResult } from '@/types';
 
 export const HistoryPage: React.FC = () => {
   const navigate = useNavigate();

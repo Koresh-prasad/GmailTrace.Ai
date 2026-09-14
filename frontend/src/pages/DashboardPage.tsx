@@ -34,7 +34,7 @@ import { PageTransition } from '../components/ui/PageTransition';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { CampaignGraph } from '../components/dashboard/CampaignGraph';
 import { api } from '../services/api';
-import { DashboardStats, ScanResult } from '@shared/types';
+import { DashboardStats, ScanResult } from '@/types';
 
 export const DashboardPage: React.FC = () => {
   const navigate = useNavigate();

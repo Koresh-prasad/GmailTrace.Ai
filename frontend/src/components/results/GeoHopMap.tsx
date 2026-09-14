@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { EmailHop } from '@shared/types';
+import { EmailHop } from '@/types';
 import { MapPin, AlertTriangle, ShieldCheck, Server } from 'lucide-react';
 
 interface GeoHopMapProps {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ScanResult, DashboardStats } from '@shared/types';
+import { ScanResult, DashboardStats } from '@/types';
 
 const rawEnvUrl = (import.meta as any).env?.VITE_API_URL as string | undefined;
 const API_BASE = rawEnvUrl

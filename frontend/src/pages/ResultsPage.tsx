@@ -29,7 +29,7 @@ import { PageTransition } from '../components/ui/PageTransition';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { GeoHopMap } from '../components/results/GeoHopMap';
 import { api } from '../services/api';
-import { ScanResult } from '@shared/types';
+import { ScanResult } from '@/types';
 
 export const ResultsPage: React.FC = () => {
   const { scanId } = useParams<{ scanId: string }>();
