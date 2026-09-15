@@ -1,7 +1,13 @@
 import os
+import sys
 import random
 from datetime import datetime
 from typing import Optional, Dict, Any
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
