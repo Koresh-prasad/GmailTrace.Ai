@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="font-heading text-xs font-bold uppercase tracking-wider text-text-primary">
-              Platform
+              Platform & Evaluation
             </h4>
             <ul className="space-y-2 text-xs text-text-muted">
               <li>
@@ -47,13 +47,23 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/history" className="hover:text-primary transition-colors">
-                  Forensic History
-                </Link>
+                <a href="/demo.html" target="_blank" rel="noreferrer" className="text-primary font-semibold hover:underline flex items-center gap-1">
+                  🎬 2-Min Interactive Demo
+                </a>
               </li>
               <li>
-                <Link to="/dev/components" className="hover:text-primary transition-colors">
-                  Component Library
+                <a href="/MailShield_AI_Complete_Judge_QA_Question_Bank.pdf" download="MailShield_AI_Judge_QA_Question_Bank.pdf" className="hover:text-accent transition-colors flex items-center gap-1">
+                  📑 Judge Q&A Defense PDF
+                </a>
+              </li>
+              <li>
+                <a href="/MailShield_AI_Complete_Glossary_and_Feature_Guide.pdf" download="MailShield_AI_Glossary_Feature_Guide.pdf" className="hover:text-warning transition-colors flex items-center gap-1">
+                  📖 Terms & Feature Guide
+                </a>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-primary transition-colors">
+                  Team & Architecture
                 </Link>
               </li>
             </ul>

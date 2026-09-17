@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Sun, Moon, Menu, X, ArrowRight, Activity, Terminal } from 'lucide-react';
+import { Shield, Sun, Moon, Menu, X, ArrowRight, Activity, Terminal, Play } from 'lucide-react';
 import { Button } from './Button';
 import { useThemeStore } from '../../store/themeStore';
 import { cn } from '../../utils/cn';
@@ -84,6 +84,18 @@ export const Navbar: React.FC = () => {
 
         {/* Right CTA + Theme Toggle */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Demo Video Link */}
+          <a
+            href="/demo.html"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold font-heading text-primary border border-primary/30 bg-primary/10 hover:bg-primary/20 transition-all shadow-glow-primary"
+            title="Watch 2-Min Interactive Demo Video (Hindi & English Voice)"
+          >
+            <Play size={12} className="fill-primary" />
+            <span>Demo Video</span>
+          </a>
+
           {/* Component Showcase Link for dev / judges */}
           <Link
             to="/dev/components"
@@ -146,6 +158,16 @@ export const Navbar: React.FC = () => {
             </Link>
           ))}
           <div className="pt-2 border-t border-border flex flex-col gap-2">
+            <a
+              href="/demo.html"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Button size="sm" variant="outline" className="w-full flex items-center justify-center gap-2 border-primary/40 text-primary">
+                <Play size={14} className="fill-primary" /> Watch 2-Min Demo Video
+              </Button>
+            </a>
             <Link to="/scan" onClick={() => setMobileMenuOpen(false)}>
               <Button size="md" variant="primary" className="w-full">
                 Scan Email Now

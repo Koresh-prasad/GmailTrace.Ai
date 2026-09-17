@@ -11,7 +11,10 @@ import {
   ExternalLink,
   CheckCircle2,
   Github,
-  Download
+  Download,
+  Play,
+  FileText,
+  BookOpen
 } from 'lucide-react';
 import { GlassCard } from '../components/ui/GlassCard';
 import { Badge } from '../components/ui/Badge';
@@ -152,6 +155,93 @@ export const AboutPage: React.FC = () => {
             ))}
           </div>
         </GlassCard>
+      </ScrollReveal>
+
+      {/* 2.5 Defense & Evaluation Resources */}
+      <ScrollReveal>
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2">
+              <Badge status="Safe" size="sm">SIH EVALUATION DEFENSE SUITE</Badge>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-text-primary">
+              Grand Jury Defense & Evaluation Kit
+            </h2>
+            <p className="text-xs sm:text-sm text-text-muted max-w-2xl mx-auto">
+              Complete pitch collateral, video walkthroughs, and jury QA countermeasures prepared for Smart India Hackathon
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <GlassCard glow="blue" className="p-5 flex flex-col justify-between space-y-4 hover:border-primary/50 transition-colors">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
+                  <Play size={20} className="fill-primary" />
+                </div>
+                <h3 className="text-sm font-heading font-bold text-text-primary">2-Min Demo Video</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Interactive animated walkthrough with Hindi & English voice narration.
+                </p>
+              </div>
+              <a href="/demo.html" target="_blank" rel="noreferrer">
+                <Button variant="primary" size="sm" className="w-full flex items-center justify-center gap-1.5">
+                  <Play size={13} className="fill-white" /> Watch Video
+                </Button>
+              </a>
+            </GlassCard>
+
+            <GlassCard glow="green" className="p-5 flex flex-col justify-between space-y-4 hover:border-accent/50 transition-colors">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent">
+                  <FileText size={20} />
+                </div>
+                <h3 className="text-sm font-heading font-bold text-text-primary">Judge Q&A Bank</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  20 high-probability grand jury questions with technical defense answers.
+                </p>
+              </div>
+              <a href="/MailShield_AI_Complete_Judge_QA_Question_Bank.pdf" download="MailShield_AI_Judge_QA_Question_Bank.pdf">
+                <Button variant="outline" size="sm" className="w-full flex items-center justify-center gap-1.5 border-accent/40 text-accent hover:border-accent">
+                  <Download size={13} /> Download Q&A PDF
+                </Button>
+              </a>
+            </GlassCard>
+
+            <GlassCard glow="amber" className="p-5 flex flex-col justify-between space-y-4 hover:border-warning/50 transition-colors">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-warning/10 border border-warning/30 flex items-center justify-center text-warning">
+                  <BookOpen size={20} />
+                </div>
+                <h3 className="text-sm font-heading font-bold text-text-primary">Terms & Feature Guide</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Every technical term & forensic algorithm explained in plain words with examples.
+                </p>
+              </div>
+              <a href="/MailShield_AI_Complete_Glossary_and_Feature_Guide.pdf" download="MailShield_AI_Glossary_Feature_Guide.pdf">
+                <Button variant="outline" size="sm" className="w-full flex items-center justify-center gap-1.5 border-warning/40 text-warning hover:border-warning">
+                  <Download size={13} /> Download Guide PDF
+                </Button>
+              </a>
+            </GlassCard>
+
+            <GlassCard glow="blue" className="p-5 flex flex-col justify-between space-y-4 hover:border-primary/50 transition-colors">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
+                  <Layers size={20} />
+                </div>
+                <h3 className="text-sm font-heading font-bold text-text-primary">Architecture Blueprint</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Dual-engine failover, RFC-5322 specs, and SHA-256 custody architecture.
+                </p>
+              </div>
+              <a href="/MailShield_AI_Technical_Stack_Architecture.pdf" download="MailShield_AI_Technical_Stack_Architecture.pdf">
+                <Button variant="outline" size="sm" className="w-full flex items-center justify-center gap-1.5 border-primary/40 text-primary hover:border-primary">
+                  <Download size={13} /> Download Specs PDF
+                </Button>
+              </a>
+            </GlassCard>
+          </div>
+        </div>
       </ScrollReveal>
 
       {/* 3. Team Section */}
