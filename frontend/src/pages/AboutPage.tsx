@@ -38,20 +38,23 @@ export const AboutPage: React.FC = () => {
     {
       name: 'Subham Pradhan',
       role: 'Lead Full-Stack Architect & Cyber Forensics Lead',
+      avatar: 'SP',
       bio: 'Architected end-to-end RFC-5322 header parsing engine, multi-hop IP triangulation, and forensic PDF reporting.',
       tags: ['Full Stack', 'Forensics', 'Security Engineering']
     },
     {
-      name: 'Cyber Intel Specialist',
-      role: 'Threat Intelligence & Rule Engine Engineer',
-      bio: 'Implemented SPF/DKIM/DMARC cryptographic validation heuristics and urgency NLP classification models.',
-      tags: ['NLP', 'Threat Intel', 'Cryptography']
+      name: 'Sukruti & Mrinimayee',
+      role: 'Cyber Intel Specialists',
+      avatar: 'SM',
+      bio: 'Implemented SPF/DKIM/DMARC cryptographic validation heuristics, threat intelligence algorithms, and urgency NLP models.',
+      tags: ['Cyber Intel', 'Threat Intel', 'Cryptography']
     },
     {
-      name: 'Frontend / UI Systems Engineer',
-      role: 'Product Designer & UI Engineer',
-      bio: 'Designed the MailShield dark theme design system, interactive Leaflet geo-routing, and telemetry dashboards.',
-      tags: ['UI/UX', 'Tailwind', 'Framer Motion']
+      name: 'Sonali & Samaresh + Soumya',
+      role: 'Frontend & UI Design Engineers',
+      avatar: 'UI',
+      bio: 'Crafted the MailShield dark-glassmorphism design system, interactive Leaflet geo-routing, and telemetry dashboards.',
+      tags: ['UI/UX', 'Tailwind', 'Frontend Systems']
     }
   ];
 
@@ -166,8 +169,8 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {teamMembers.map((member, i) => (
               <GlassCard key={member.name} glow="blue" className="p-6 space-y-4 text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-heading font-bold text-xl mx-auto shadow-glow-primary">
-                  {member.name[0]}
+                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-heading font-bold text-lg mx-auto shadow-glow-primary tracking-wider">
+                  {member.avatar || member.name[0]}
                 </div>
                 <div>
                   <h3 className="text-lg font-heading font-bold text-text-primary">{member.name}</h3>
