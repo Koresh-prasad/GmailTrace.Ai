@@ -17,7 +17,8 @@ import {
   Fingerprint,
   Radio,
   Server,
-  Terminal
+  Terminal,
+  Play
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { GlassCard } from '../components/ui/GlassCard';
@@ -125,9 +126,11 @@ export const LandingPage: React.FC = () => {
                 Scan an Email Now
               </Button>
             </Link>
-            <Button size="lg" variant="outline" onClick={scrollToDemo} className="w-full sm:w-auto">
-              See Live Demo
-            </Button>
+            <a href="/demo.html" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto flex items-center justify-center gap-2 border-primary/40 hover:border-primary">
+                <Play size={16} className="text-primary fill-primary" /> Watch 2-Min Demo Video
+              </Button>
+            </a>
           </motion.div>
 
           {/* Micro badges */}

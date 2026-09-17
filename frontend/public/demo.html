@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MailShield AI — 2-Minute Interactive Video Walkthrough</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+    }
+    .glow-blue { animation: pulse-glow 2.5s infinite; }
+    .cursor-pointer-dot {
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased p-4 sm:p-6 min-h-screen flex flex-col items-center justify-center font-sans selection:bg-blue-500 selection:text-white">
+
+  <!-- Video Container -->
+  <div class="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+    
+    <!-- Top Header Bar -->
+    <div class="px-5 py-3.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold text-sm">
+          🛡️
+        </div>
+        <div>
+          <h1 class="text-sm font-bold text-slate-100 tracking-wide">MailShield AI — 2-Minute Product Demo Walkthrough</h1>
+          <p class="text-xs text-slate-400">Autonomous Email Threat Detection & Multi-Hop GeoIP Forensics</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          ● 100% Live on Vercel
+        </span>
+      </div>
+    </div>
+
+    <!-- Screen Stage (The Simulated Video Player) -->
+    <div class="relative w-full aspect-video bg-slate-950 overflow-hidden flex flex-col justify-between p-6 sm:p-8" id="videoStage">
+      
+      <!-- Ambient Backlight -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/15 via-transparent to-indigo-900/15 pointer-events-none"></div>
+
+      <!-- Animated Virtual Mouse Cursor -->
+      <div id="virtualCursor" class="absolute z-50 pointer-events-none transition-all duration-700 ease-out transform -translate-x-1/2 -translate-y-1/2" style="top: 80%; left: 50%;">
+        <div class="w-6 h-6 relative">
+          <svg class="w-6 h-6 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] fill-blue-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>
+          </svg>
+          <div id="cursorClickRipple" class="absolute -top-1 -left-1 w-8 h-8 rounded-full border-2 border-blue-400 opacity-0 scale-50 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: Introduction (0:00 - 0:25) -->
+      <div id="scene1" class="relative z-10 flex flex-col items-center justify-center text-center h-full space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono">
+          <span>AI-POWERED CYBER FORENSICS PLATFORM</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+          Detect. <span class="text-blue-500">Trace.</span> Prove.
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 max-w-xl">
+          Unmasking spoofed senders, uncovering hidden international server hops, and generating court-admissible CERT-In forensic audit reports.
+        </p>
+        <div class="pt-4 flex items-center space-x-4">
+          <button id="heroScanBtn" class="px-6 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 border border-blue-500 transition-all">
+            Scan an Email Now →
+          </button>
+          <button class="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-semibold text-sm border border-slate-700">
+            See Live Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- SCENE 2: The Scanner in Action (0:25 - 0:50) -->
+      <div id="scene2" class="relative z-10 hidden flex-col justify-center h-full space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-mono font-bold text-blue-400">RFC-5322 DECONSTRUCTION RADAR</span>
+          </div>
+          <span class="text-xs text-slate-400 font-mono">Mode: Raw Header Ingestion</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-300 overflow-hidden relative">
+            <div class="text-slate-500 mb-1 border-b border-slate-800 pb-1 flex justify-between">
+              <span>Raw Email Header Stream</span>
+              <span class="text-blue-400">Sample Phishing Loaded</span>
+            </div>
+            <p class="text-rose-400 truncate">From: "Corporate IT Support" &lt;security-alert@bank-corp-security.top&gt;</p>
+            <p class="text-slate-400 truncate">Received: from mail-relay-4.ru [185.220.101.5]</p>
+            <p class="text-amber-400 truncate">Authentication-Results: spf=fail; dkim=fail; dmarc=fail (p=REJECT)</p>
+            <p class="text-slate-400 truncate">Subject: URGENT: Mandatory MFA Re-Verification - Account Suspended</p>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-center space-y-2.5">
+            <p class="text-xs font-semibold text-slate-200">5-Stage Forensic Analysis Pipeline</p>
+            <div class="space-y-1.5 text-xs">
+              <div class="flex items-center space-x-2 text-emerald-400"><span class="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[10px]">✓</span><span>RFC-5322 Header Chain Extracted</span></div>
+              <div class="flex items-center space-x-2 text-emerald-400"><span class="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[10px]">✓</span><span>Cryptographic Envelope Validated</span></div>
+              <div class="flex items-center space-x-2 text-blue-400 animate-pulse"><span class="w-3.5 h-3.5 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px]">⚡</span><span>AI Social Engineering Linguistics Evaluated</span></div>
+              <div class="flex items-center space-x-2 text-slate-500"><span>○</span><span>Multi-Hop MTA Geo-Trajectory Mapping</span></div>
+              <div class="flex items-center space-x-2 text-slate-500"><span>○</span><span>Threat Score & Custody Seal Synthesis</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button id="analyzeNowBtn" class="px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-xs shadow-md">
+            Analyzing Network Telemetry...
+          </button>
+        </div>
+      </div>
+
+      <!-- SCENE 3: Threat Score & Authentication Badges (0:50 - 1:15) -->
+      <div id="scene3" class="relative z-10 hidden flex-col justify-center h-full space-y-4">
+        <div class="grid grid-cols-3 gap-4 items-center">
+          
+          <!-- Radial Gauge Box -->
+          <div class="bg-slate-900/90 border border-rose-500/40 rounded-xl p-4 flex flex-col items-center justify-center text-center glow-blue">
+            <div class="relative w-24 h-24 flex items-center justify-center">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                <path class="text-slate-800" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="text-rose-500" stroke-dasharray="90, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              </svg>
+              <div class="absolute flex flex-col items-center">
+                <span class="text-2xl font-black text-rose-400">90</span>
+                <span class="text-[9px] text-slate-400 uppercase font-bold">Threat Score</span>
+              </div>
+            </div>
+            <span class="mt-2 px-3 py-0.5 rounded-full text-xs font-extrabold bg-rose-500/20 text-rose-400 border border-rose-500/40">
+              MALICIOUS
+            </span>
+          </div>
+
+          <!-- Auth Checks & Triggers -->
+          <div class="col-span-2 bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-slate-200">Cryptographic Protocol Validation</span>
+              <span class="text-[10px] font-mono text-slate-500">RFC Standards</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+              <div class="p-2 rounded-lg bg-rose-950/40 border border-rose-800/40">
+                <div class="text-slate-400 text-[10px]">SPF (RFC 7208)</div>
+                <div class="text-rose-400 font-bold">FAIL</div>
+              </div>
+              <div class="p-2 rounded-lg bg-rose-950/40 border border-rose-800/40">
+                <div class="text-slate-400 text-[10px]">DKIM (RFC 6376)</div>
+                <div class="text-rose-400 font-bold">FAIL</div>
+              </div>
+              <div class="p-2 rounded-lg bg-rose-950/40 border border-rose-800/40">
+                <div class="text-slate-400 text-[10px]">DMARC (RFC 7489)</div>
+                <div class="text-rose-400 font-bold">REJECT</div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong class="text-rose-400">Forensic Diagnosis:</strong> Sender spoofing confirmed. Sending IP <code class="text-blue-400">185.220.101.5</code> is unauthorized by target DNS domain. 2 credential harvesting URLs detected.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SCENE 4: Interactive Leaflet World Map (1:15 - 1:40) -->
+      <div id="scene4" class="relative z-10 hidden flex-col justify-center h-full space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-mono font-bold text-blue-400">GLOBAL MTA RELAY TRAJECTORY MAP</span>
+          </div>
+          <span class="text-xs text-rose-400 font-mono bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/30">
+            Foreign Origin Mismatch Detected
+          </span>
+        </div>
+
+        <!-- Simulated Leaflet Map Container -->
+        <div class="w-full h-44 bg-slate-900/90 border border-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center">
+          <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          
+          <!-- Visual Transit Route Polyline -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none">
+            <path d="M 220 70 Q 420 40 600 90" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" class="animate-pulse" />
+          </svg>
+
+          <!-- Hop 1: Moscow (Attacker Origin) -->
+          <div class="absolute top-12 left-48 flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-rose-500 border-2 border-white shadow-lg animate-ping"></div>
+            <div class="w-3.5 h-3.5 rounded-full bg-rose-600 border-2 border-white absolute top-0.5"></div>
+            <span class="mt-5 text-[10px] font-mono bg-slate-900/90 px-1.5 py-0.5 rounded border border-rose-500/50 text-rose-300 font-bold whitespace-nowrap">
+              Hop #1: Moscow, Russia (185.220.101.5)
+            </span>
+          </div>
+
+          <!-- Hop 2: Amsterdam (Proxy Relay) -->
+          <div class="absolute top-20 right-48 flex flex-col items-center">
+            <div class="w-3.5 h-3.5 rounded-full bg-blue-500 border-2 border-white"></div>
+            <span class="mt-4 text-[10px] font-mono bg-slate-900/90 px-1.5 py-0.5 rounded border border-blue-500/50 text-blue-300 font-bold whitespace-nowrap">
+              Hop #2: Amsterdam, NL (91.240.118.82)
+            </span>
+          </div>
+
+          <div class="absolute bottom-2 left-3 text-[10px] font-mono text-slate-500">
+            MTA Unrolling Engine: Leaflet.js + OpenStreetMap Vector Tiles
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 5: AI Copilot & Court-Admissible PDF Report (1:40 - 2:00) -->
+      <div id="scene5" class="relative z-10 hidden flex-col justify-center h-full space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          
+          <!-- AI Copilot Chat Snippet -->
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 border-b border-slate-800 pb-1.5 mb-2">
+                <span class="text-sm">🤖</span>
+                <span class="text-xs font-bold text-slate-200">Forensic AI Copilot</span>
+                <span class="text-[9px] bg-blue-500/20 text-blue-400 px-1.5 py-0.2 rounded font-mono">Active</span>
+              </div>
+              <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 text-[11px] text-slate-300 space-y-1.5">
+                <p class="text-blue-400 font-semibold">User: "Why was this email flagged as Malicious?"</p>
+                <p class="text-slate-300 leading-snug">
+                  Copilot: "Falsified headers. Claimed sender is Corporate IT, but network transit proves origin is IP 185.220.101.5 in Moscow. SPF & DKIM failed."
+                </p>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 pt-1 font-mono">
+              Natural Language Cyber Threat Assistant
+            </div>
+          </div>
+
+          <!-- Legal PDF Certificate -->
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-2">
+                <span class="text-xs font-bold text-slate-200">Court-Admissible PDF Report</span>
+                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded font-mono">CERT-In Ready</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-950/70 border border-slate-800 text-[10px] space-y-1 font-mono text-slate-400">
+                <p>Case ID: <span class="text-slate-200">#scan-98f2a1b4</span></p>
+                <p>SHA-256 Custody Hash: <span class="text-blue-400 truncate block">e8f9a204107b34d90987c61f23...</span></p>
+                <p>Chain of Custody: <span class="text-emerald-400">TAMPER-PROOF VERIFIED</span></p>
+              </div>
+            </div>
+            <div class="pt-2 flex justify-end">
+              <button id="pdfDownloadBtn" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold text-xs flex items-center space-x-1 shadow">
+                <span>📄 Export Forensic PDF</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center">
+          <p class="text-xs text-slate-400 font-mono">
+            Deployed & Live for Evaluators: <a href="https://gmail-trace-ai.vercel.app" target="_blank" class="text-blue-400 underline font-bold">gmail-trace-ai.vercel.app</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Subtitles / Closed Captions Overlay -->
+      <div class="relative z-20 bg-slate-950/85 border border-slate-800/80 rounded-xl px-4 py-2.5 backdrop-blur-sm text-center">
+        <p id="captionText" class="text-xs sm:text-sm font-medium text-slate-200 tracking-wide transition-all duration-300">
+          Click "Play Demo Video" below to start the 2-minute narrated walkthrough.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Video Player Controls Bar -->
+    <div class="px-5 py-3.5 bg-slate-900 border-t border-slate-800 flex flex-col space-y-3">
+      
+      <!-- Progress Scrubber Bar -->
+      <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden relative cursor-pointer" id="progressScrubber">
+        <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full w-0 transition-all duration-200"></div>
+      </div>
+
+      <!-- Button Controls -->
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center space-x-3">
+          <button id="playPauseBtn" class="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold flex items-center space-x-1.5 shadow-md transition-colors">
+            <span id="playIcon">▶</span>
+            <span id="playText">Play Demo Video</span>
+          </button>
+          
+          <button id="restartBtn" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors">
+            ↺ Restart
+          </button>
+
+          <button id="speechToggleBtn" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center space-x-1">
+            <span id="speechIcon">🔊</span>
+            <span id="speechLabel">AI Voice: ON</span>
+          </button>
+        </div>
+
+        <!-- Timestamp Display -->
+        <div class="font-mono text-slate-400 font-semibold">
+          <span id="currentTime">0:00</span> / <span id="totalTime">2:00</span>
+        </div>
+
+        <!-- Chapter Jump Tabs -->
+        <div class="hidden sm:flex items-center space-x-1 font-mono text-[11px]">
+          <button onclick="jumpTo(0)" class="px-2 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700">1. Intro</button>
+          <button onclick="jumpTo(25)" class="px-2 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700">2. Scan</button>
+          <button onclick="jumpTo(50)" class="px-2 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700">3. Auth</button>
+          <button onclick="jumpTo(75)" class="px-2 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700">4. Map</button>
+          <button onclick="jumpTo(100)" class="px-2 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700">5. Report</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Chapter Keyframes (120 seconds total)
+    const CHAPTERS = [
+      {
+        start: 0,
+        end: 25,
+        sceneId: 'scene1',
+        cursorPos: { top: '75%', left: '42%' },
+        caption: "Welcome to MailShield AI — an autonomous cyber forensics intelligence platform that unmasks email threats with cryptographic proof.",
+        narration: "Welcome to MailShield AI, an autonomous cyber forensics platform that unmasks email threats with cryptographic proof."
+      },
+      {
+        start: 25,
+        end: 50,
+        sceneId: 'scene2',
+        cursorPos: { top: '80%', left: '85%' },
+        caption: "Step 1: Paste any raw email header or upload an EML file. MailShield deconstructs RFC-5322 headers across 5 automated forensic stages.",
+        narration: "Simply paste raw email headers or upload an EML file. MailShield deconstructs RFC-5322 headers across five automated forensic stages in seconds."
+      },
+      {
+        start: 50,
+        end: 75,
+        sceneId: 'scene3',
+        cursorPos: { top: '45%', left: '50%' },
+        caption: "Step 2: Threat Scoring. The engine checks SPF, DKIM, and DMARC alignment, calculates a 0-100 risk score, and explains the primary security triggers.",
+        narration: "The engine validates SPF, DKIM, and DMARC alignment, computes a threat score of 90 out of 100, and classifies the email as Malicious."
+      },
+      {
+        start: 75,
+        end: 100,
+        sceneId: 'scene4',
+        cursorPos: { top: '35%', left: '30%' },
+        caption: "Step 3: Multi-Hop GeoIP Unrolling. The Leaflet map traces the true MTA transit trajectory from Moscow through Amsterdam, exposing unauthorized relays.",
+        narration: "The interactive Leaflet world map unrolls the server transit trajectory from Moscow through Amsterdam, exposing the true unauthorized origin node."
+      },
+      {
+        start: 100,
+        end: 120,
+        sceneId: 'scene5',
+        cursorPos: { top: '82%', left: '80%' },
+        caption: "Step 4: AI Copilot & CERT-In Export. Ask the Copilot anything about the case, and download a court-admissible PDF stamped with a tamper-proof SHA-256 custody hash.",
+        narration: "Finally, ask the AI Copilot any question, and export a court-admissible forensic PDF sealed with a cryptographic SHA-256 custody hash."
+      }
+    ];
+
+    let currentSec = 0;
+    let isPlaying = false;
+    let timer = null;
+    let speechEnabled = true;
+    let lastSpokenChapter = -1;
+
+    const progressBar = document.getElementById('progressBar');
+    const currentTimeEl = document.getElementById('currentTime');
+    const captionText = document.getElementById('captionText');
+    const virtualCursor = document.getElementById('virtualCursor');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const speechToggleBtn = document.getElementById('speechToggleBtn');
+    const speechLabel = document.getElementById('speechLabel');
+    const speechIcon = document.getElementById('speechIcon');
+
+    function speakText(text) {
+      if (!speechEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function renderState() {
+      const pct = (currentSec / 120) * 100;
+      progressBar.style.width = pct + '%';
+      
+      const m = Math.floor(currentSec / 60);
+      const s = Math.floor(currentSec % 60);
+      currentTimeEl.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+
+      // Find current chapter
+      const chapterIdx = CHAPTERS.findIndex(c => currentSec >= c.start && currentSec < c.end) !== -1
+        ? CHAPTERS.findIndex(c => currentSec >= c.start && currentSec < c.end)
+        : CHAPTERS.length - 1;
+
+      const currentChapter = CHAPTERS[chapterIdx];
+
+      // Switch active scene
+      ['scene1', 'scene2', 'scene3', 'scene4', 'scene5'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (id === currentChapter.sceneId) {
+            el.classList.remove('hidden');
+            el.classList.add('flex');
+          } else {
+            el.classList.add('hidden');
+            el.classList.remove('flex');
+          }
+        }
+      });
+
+      // Move Cursor
+      if (currentChapter.cursorPos) {
+        virtualCursor.style.top = currentChapter.cursorPos.top;
+        virtualCursor.style.left = currentChapter.cursorPos.left;
+      }
+
+      // Update Captions
+      captionText.textContent = currentChapter.caption;
+
+      // Speak narration when entering a new chapter
+      if (chapterIdx !== lastSpokenChapter && isPlaying) {
+        lastSpokenChapter = chapterIdx;
+        speakText(currentChapter.narration);
+      }
+    }
+
+    function tick() {
+      if (currentSec >= 120) {
+        pauseVideo();
+        currentSec = 120;
+        renderState();
+        return;
+      }
+      currentSec += 1;
+      renderState();
+    }
+
+    function playVideo() {
+      isPlaying = true;
+      playIcon.textContent = '❚❚';
+      playText.textContent = 'Pause';
+      timer = setInterval(tick, 1000);
+      renderState();
+      const chapterIdx = CHAPTERS.findIndex(c => currentSec >= c.start && currentSec < c.end);
+      if (chapterIdx !== -1) {
+        speakText(CHAPTERS[chapterIdx].narration);
+      }
+    }
+
+    function pauseVideo() {
+      isPlaying = false;
+      playIcon.textContent = '▶';
+      playText.textContent = 'Play Demo Video';
+      clearInterval(timer);
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function togglePlay() {
+      if (isPlaying) pauseVideo();
+      else {
+        if (currentSec >= 120) currentSec = 0;
+        playVideo();
+      }
+    }
+
+    function restartVideo() {
+      pauseVideo();
+      currentSec = 0;
+      lastSpokenChapter = -1;
+      renderState();
+    }
+
+    function jumpTo(sec) {
+      currentSec = sec;
+      lastSpokenChapter = -1;
+      renderState();
+      if (isPlaying) {
+        const chapterIdx = CHAPTERS.findIndex(c => currentSec >= c.start && currentSec < c.end);
+        if (chapterIdx !== -1) {
+          speakText(CHAPTERS[chapterIdx].narration);
+        }
+      }
+    }
+
+    playPauseBtn.addEventListener('click', togglePlay);
+    document.getElementById('restartBtn').addEventListener('click', restartVideo);
+
+    speechToggleBtn.addEventListener('click', () => {
+      speechEnabled = !speechEnabled;
+      if (!speechEnabled && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      speechIcon.textContent = speechEnabled ? '🔊' : '🔇';
+      speechLabel.textContent = speechEnabled ? 'AI Voice: ON' : 'AI Voice: OFF';
+    });
+
+    document.getElementById('progressScrubber').addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = clickX / rect.width;
+      jumpTo(Math.floor(pct * 120));
+    });
+
+    renderState();
+  </script>
+</body>
+</html>
